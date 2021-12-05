@@ -1,0 +1,408 @@
+<br />
+<h3 class="addButton">Modifier Devis</h3>
+<button
+  class="addButton"
+  mat-raised-button
+  color="primary"
+  matTooltip="Précédent"
+  matTooltipPosition="above"
+  [routerLink]="'/devislist'"
+>
+  Précédent
+</button>
+<div class="example-container">
+  <form id="add-employe-form" #addBonReception="ngForm" (submit)="onSubmit()">
+    <div class="example-container" style="width: fit-content">
+      <div class="col-12">
+        <div class="row">
+          <mat-form-field class="field" appearance="fill">
+            <mat-label>Fournisseur</mat-label>
+            <mat-select
+              [(value)]="devis.fournisseur.id"
+              (selectionChange)="onChange()"
+            >
+              <mat-option
+                *ngFor="let fournisseur of fournisseurs"
+                [(value)]="fournisseur.id"
+                >{{ fournisseur.raisonSociale }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>Numero de Devis</mat-label>
+            <input
+              matInput
+              #numero="ngModel"
+              minlength="3"
+              id="numero"
+              name="numero"
+              [(ngModel)]="devis.numero"
+              required
+              placeholder="numero"
+            />
+            <mat-error *ngIf="numero.invalid">
+              <span *ngIf="numero.errors.required">Numero is required</span>
+              <span *ngIf="numero.errors.minlength">Numero is too short</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" appearance="fill">
+            <mat-label>Date </mat-label>
+            <input
+              matInput
+              [matDatepicker]="dateFab"
+              #date="ngModel"
+              id="date"
+              name="date"
+              [(ngModel)]="devis.date"
+              required
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="dateFab"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #dateFab></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>TotalHt </mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #totalHt="ngModel"
+              minlength="3"
+              id="totalHt"
+              name="totalHt"
+              [(ngModel)]="devis.totalHt"
+              required
+            />
+
+            <mat-error *ngIf="totalHt.invalid">
+              <span *ngIf="totalHt.errors.required">TotalHt is required</span>
+              <span *ngIf="totalHt.errors.minlength">TotalHt is too short</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>totalTaxe </mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #totalTaxe="ngModel"
+              minlength="1"
+              id="totalTaxe"
+              name="totalTaxe"
+              [(ngModel)]="devis.totalTaxe"
+              required
+            />
+
+            <mat-error *ngIf="totalTaxe.invalid">
+              <span *ngIf="totalTaxe.errors.required"
+                >totalTaxe is required</span
+              >
+              <span *ngIf="totalTaxe.errors.minlength"
+                >totalTaxe is too short</span
+              >
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>TotalTtc </mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #totalTtc="ngModel"
+              minlength="1"
+              id="totalTtc"
+              name="totalTtc"
+              [(ngModel)]="devis.totalTtc"
+              required
+            />
+
+            <mat-error *ngIf="totalTtc.invalid">
+              <span *ngIf="totalTtc.errors.required">TotalTtc is required</span>
+              <span *ngIf="totalTtc.errors.minlength"
+                >TotalTtc is too short</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>Remise</mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #remise="ngModel"
+              minlength="1"
+              id="remise"
+              name="remise"
+              [(ngModel)]="devis.remise"
+            />
+          </mat-form-field>
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>Marge</mat-label>
+            <input
+              matInput
+              #marge="ngModel"
+              minlength="1"
+              id="marge"
+              name="marge"
+              [(ngModel)]="devis.marge"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-5">
+        <div class="row, right">
+          <button
+            class="addButton"
+            [disabled]="addBonReception.invalid"
+            mat-button
+            class="mat-primary"
+            type="submit"
+            mat-raised-button
+          >
+            Confirmer
+          </button>
+          <button
+            class="addButton"
+            mat-button
+            class="mat-accent"
+            type="reset"
+            mat-raised-button
+          >
+            Annuler
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<br />
+<p style="text-align: right">
+  <button
+    mat-button
+    class="mat-primary addligneButton"
+    type="submit"
+    mat-raised-button
+    (click)="addRow()"
+  >
+    Ajouter ligne de Devis
+  </button>
+</p>
+
+<!-- Ajouter des ligne de Devis -->
+
+<br />
+<div class="example-container addligneButton">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Article</th>
+        <th>Quantité</th>
+        <th>% Remise</th>
+        <th>Prix unitaire</th>
+        <th>% TVA</th>
+        <th>Total TVA</th>
+        <th>Total TTC</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ligneDevis of devis.ligneDevisList; let i = index">
+        <!-- <td width="25%">
+          <mat-form-field class="lignefield" appearance="fill">
+            <mat-label>Article</mat-label>
+            <mat-select
+              [(value)]="ligneDevis.article.id"
+              (selectionChange)="calculerDevis()"
+            >
+              <mat-option *ngIf="!ligneDevisList[i].article">None</mat-option>
+              <mat-option
+                *ngFor="let article of articles"
+                [(value)]="article.id"
+                >{{ article.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </td> -->
+        <!-- <td width="25%">
+          <mat-form-field class="lignefield" appearance="fill">
+            <mat-label>Article</mat-label>
+            <mat-select [(ngModel)]="ligneDevisList[i].article" name="article" (selectionChange)="calculerDevis()">
+              <mat-option *ngFor="let article of articles" [value]="article">
+                {{ article.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td> -->
+        <td width="10%">
+          <mat-form-field class="lignefield" appearance="fill">
+            <mat-label>Article</mat-label>
+            <mat-select
+              [(ngModel)]="ligneDevis.article"
+              name="article"
+              (selectionChange)="calculerDevis()"
+            >
+              <mat-option *ngFor="let article of articles" [value]="article">
+                {{ article.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td width="10%">
+          <mat-form-field
+            class=""
+            width="20px"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>Quantite </mat-label>
+            <input
+              matInput
+              #quantite="ngModel"
+              minlength="1"
+              id="quantite"
+              (keyup)="calculerDevis()"
+              name="quantite"
+              [(ngModel)]="ligneDevis.quantite"
+              required
+            />
+
+            <mat-error *ngIf="quantite.invalid">
+              <span *ngIf="quantite.errors.required">Quantite is required</span>
+              <span *ngIf="quantite.errors.minlength"
+                >Quantite is too short</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td width="10%">
+          <mat-form-field
+            class=""
+            width="20px"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>Remise </mat-label>
+            <input
+              matInput
+              #remise="ngModel"
+              minlength="1"
+              id="remise"
+              (keyup)="calculerDevis()"
+              name="remise"
+              [(ngModel)]="ligneDevis.remise"
+              required
+            />
+          </mat-form-field>
+        </td>
+        <td width="15%">
+          <ng-container matColumnDef="prix">
+            <mat-header-cell *matHeaderCellDef> Prix </mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article"
+              class="form-control"
+            >
+              {{ ligneDevis.article.prix }}
+            </mat-cell>
+          </ng-container>
+        </td>
+
+        <td width="10%">
+          <ng-container matColumnDef="% TVA">
+            <mat-header-cell *matHeaderCellDef> % Tva </mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article"
+              class="form-control"
+            >
+              {{ ligneDevis.article.tva }} %</mat-cell
+            >
+          </ng-container>
+        </td>
+        <td width="15%">
+          <ng-container matColumnDef="Total TVA">
+            <mat-header-cell *matHeaderCellDef> Total Tva </mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article && ligneDevis.quantite"
+              class="form-control"
+            >
+              {{
+                (ligneDevis.article.prix *
+                  ligneDevis.article.tva *
+                  ligneDevis.quantite) /
+                  100
+              }}
+            </mat-cell>
+          </ng-container>
+        </td>
+        <td width="20%">
+          <ng-container matColumnDef="Total TTC">
+            <mat-header-cell *matHeaderCellDef> Total TTC </mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article && ligneDevis.quantite"
+              class="form-control"
+              [(ngModel)]="ligneDevisList[i].totalTtc"
+            >
+              {{
+                (ligneDevis.article.prix *
+                  ligneDevis.article.tva *
+                  ligneDevis.quantite) /
+                  100 +
+                  ligneDevis.article.prix * ligneDevis.quantite
+              }}
+            </mat-cell>
+          </ng-container>
+        </td>
+        <td width="5%">
+          <button
+            (click)="deleteRow(i)"
+            mat-icon-button
+            color="warn"
+            matTooltip="supprimer"
+            matTooltipPosition="above"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br />
+
+<!-- Fin  Ajouter des ligne de bonReception -->

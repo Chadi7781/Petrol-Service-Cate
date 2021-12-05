@@ -1,0 +1,60 @@
+<div class="espace"></div>
+<h3 class="addButton">Modifier Employee</h3>
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/employees'">Précédent
+  </button>
+<div class="example-container addButton">
+  <form id="edit-employe-form" #addEmploye="ngForm" (submit)="onSubmit()">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Nom</mat-label>
+              <input matInput #firstName="ngModel" minlength="3"
+                     id="firstName" name="firstName"
+                     [(ngModel)]="employee.firstName" required placeholder="Nom">
+              <mat-error *ngIf="firstName.invalid">
+                <span *ngIf="firstName.errors.required">Nom is required</span>
+                <span *ngIf="firstName.errors.minlength">Nom is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Prénom</mat-label>
+              <input matInput #lastName="ngModel" minlength="3" id="lastName"
+                     name="lastName" [(ngModel)]="employee.lastName" required
+                     placeholder="Prénom">
+              <mat-error *ngIf="lastName.invalid">
+                <span *ngIf="lastName.errors.required">Prénom is required</span>
+                <span *ngIf="lastName.errors.minlength">Prénom is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Email  <mat-icon> email</mat-icon></mat-label>
+              <input matInput #emailId="ngModel" minlength="7" id="emailId"
+                     name="emailId" [(ngModel)]="employee.emailId" required>
+
+              <mat-error *ngIf="emailId.invalid">
+                <span *ngIf="emailId.errors.required">Email  is required</span>
+                <span *ngIf="emailId.errors.minlength">Email  is too short</span>
+              </mat-error>
+            </mat-form-field>
+            </div>
+          </div>
+
+   
+        <div class="col-5">
+
+          <div class="row, right">
+              <button class="addButton" [disabled]="addEmploye.invalid" mat-button class="mat-primary" type="submit" mat-raised-button>Confirmer</button>
+              <button class="addButton" mat-button class="mat-accent" type="reset" mat-raised-button>Annuler</button>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>

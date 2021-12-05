@@ -1,0 +1,277 @@
+<br />
+<h3 class="addButton">Détails Devis</h3>
+<button
+  class="addButton"
+  mat-raised-button
+  color="primary"
+  matTooltip="Précédent"
+  matTooltipPosition="above"
+  [routerLink]="'/devislist'"
+>
+  Précédent
+</button>
+<div class="example-container">
+  <form id="add-employe-form" #addBonReception="ngForm">
+    <div class="example-container" style="width: fit-content">
+      <div class="col-12">
+        <div class="row">
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>Fournisseur</mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #founissuer="ngModel"
+              id="fournisseur"
+              name="fournisseur"
+              [(ngModel)]="devis.fournisseur.raisonSociale"
+            />
+          </mat-form-field>
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>Numero de Devis</mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #numero="ngModel"
+              id="numero"
+              name="numero"
+              [(ngModel)]="devis.numero"
+            />
+          </mat-form-field>
+          <mat-form-field class="field" appearance="fill">
+            <mat-label>Date</mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #date="ngModel"
+              id="date"
+              name="date"
+              [(ngModel)]="devis.date"
+            />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>TotalHt </mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #totalHt="ngModel"
+              id="totalHt"
+              name="totalHt"
+              [(ngModel)]="devis.totalHt"
+            />
+
+            <mat-error *ngIf="totalHt.invalid">
+              <span *ngIf="totalHt.errors.required">TotalHt is required</span>
+              <span *ngIf="totalHt.errors.minlength">TotalHt is too short</span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+          class="field"
+          appearance="fill"
+          [floatLabel]="floatLabelControl.value"
+        >
+          <mat-label>Remise</mat-label>
+          <input
+            readonly="readonly"
+            matInput
+            #remise="ngModel"
+            id="remise"
+            name="remise"
+            [(ngModel)]="devis.remise"
+          />
+        </mat-form-field>
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>totalTaxe </mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #totalTaxe="ngModel"
+              id="totalTaxe"
+              name="totalTaxe"
+              [(ngModel)]="devis.totalTaxe"
+            />
+          </mat-form-field>
+
+          <mat-form-field
+            class="field"
+            appearance="fill"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>TotalTtc </mat-label>
+            <input
+              readonly="readonly"
+              matInput
+              #totalTtc="ngModel"
+              id="totalTtc"
+              name="totalTtc"
+              [(ngModel)]="devis.totalTtc"
+            />
+          </mat-form-field>
+          <mat-form-field
+          class="field"
+          appearance="fill"
+          [floatLabel]="floatLabelControl.value"
+        >
+          <mat-label>Etat</mat-label>
+          <input
+            readonly="readonly"
+            matInput
+            #marge="ngModel"
+            id="etat"
+            name="etat"
+            [(ngModel)]="devis.etat.name"
+          />
+        </mat-form-field>
+        <mat-form-field
+        class="field"
+        appearance="fill"
+        [floatLabel]="floatLabelControl.value"
+      >
+        <mat-label>Marge</mat-label>
+        <input
+          readonly="readonly"
+          matInput
+          #marge="ngModel"
+          id="marge"
+          name="marge"
+          [(ngModel)]="devis.marge"
+        />
+       </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<br />
+<div class="example-container addligneButton">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Article</th>
+        <th>Quantité</th>
+        <th>Prix unitaire</th>
+        <th>% Remise</th>
+        <th>% TVA</th>
+        <th>Total TVA</th>
+        <th>Total TTC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ligneDevis of devis.ligneDevisList; let i = index">
+        <td width="25%">
+          <ng-container matColumnDef="Article">
+            <mat-header-cell *matHeaderCellDef>Article</mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article"
+              class="form-control"
+            >
+              {{ ligneDevis.article.name }}</mat-cell
+            >
+          </ng-container>
+        </td>
+        <td width="10%">
+          <ng-container matColumnDef="Quantite">
+            <mat-header-cell *matHeaderCellDef>Quantite</mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.quantite"
+              class="form-control"
+            >
+              {{ ligneDevis.quantite }}</mat-cell
+            >
+          </ng-container>
+        </td>
+        <td width="15%">
+          <ng-container matColumnDef="prix">
+            <mat-header-cell *matHeaderCellDef> Prix </mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article"
+              class="form-control"
+            >
+              {{ ligneDevis.article.prix }}
+            </mat-cell>
+          </ng-container>
+        </td>
+        <td width="15%">
+          <ng-container matColumnDef="remise">
+            <mat-header-cell *matHeaderCellDef> Remise </mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article"
+              class="form-control"
+            >
+              {{ ligneDevis.remise }}
+            </mat-cell>
+          </ng-container>
+        </td>
+        <td width="10%">
+          <ng-container matColumnDef="% TVA">
+            <mat-header-cell *matHeaderCellDef> % Tva </mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article"
+              class="form-control"
+            >
+              {{ ligneDevis.article.tva }} %</mat-cell
+            >
+          </ng-container>
+        </td>
+        <td width="15%">
+          <ng-container matColumnDef="Total TVA">
+            <mat-header-cell *matHeaderCellDef> Total Tva </mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article && ligneDevis.quantite"
+              class="form-control"
+            >
+              {{
+                (ligneDevis.article.prix *
+                  ligneDevis.article.tva *
+                  ligneDevis.quantite) /
+                  100
+              }}
+            </mat-cell>
+          </ng-container>
+        </td>
+        <td width="20%">
+          <ng-container matColumnDef="Total TTC">
+            <mat-header-cell *matHeaderCellDef> Total TTC </mat-header-cell>
+            <mat-cell
+              readonly="readonly"
+              *ngIf="ligneDevis.article && ligneDevis.quantite"
+              class="form-control"
+            >
+              {{
+                (ligneDevis.article.prix *
+                  ligneDevis.article.tva *
+                  ligneDevis.quantite) /
+                  100 +
+                  ligneDevis.article.prix * ligneDevis.quantite
+              }}
+            </mat-cell>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

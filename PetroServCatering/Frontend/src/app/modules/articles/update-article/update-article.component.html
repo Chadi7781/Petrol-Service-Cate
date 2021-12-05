@@ -1,0 +1,198 @@
+<div class="espace"></div>
+<h3 class="addButton">Modifier Article</h3>
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/articles'">Précédent
+  </button>
+  <div class="example-container">
+    <form id="add-employe-form" #addArticle="ngForm" (submit)="onSubmit()">
+  
+      <div class="example-container" style="width: fit-content">
+         <div class="col-12">
+            <div class="row">
+  
+              <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+                <mat-label>Désignation</mat-label>
+                <input matInput #name="ngModel" minlength="3"
+                       id="name" name="name"
+                       [(ngModel)]="article.name" required placeholder="Nom">
+                <mat-error *ngIf="name.invalid">
+                  <span *ngIf="name.errors.required">Nom is required</span>
+                  <span *ngIf="name.errors.minlength">Nom is too short</span>
+  
+                </mat-error>
+              </mat-form-field>
+  
+              <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+                <mat-label>Reference</mat-label>
+                <input matInput #reference="ngModel" minlength="3" id="reference"
+                       name="reference" [(ngModel)]="article.reference" required
+                       placeholder="reference">
+                <mat-error *ngIf="reference.invalid">
+                  <span *ngIf="reference.errors.required">Prénom is required</span>
+                  <span *ngIf="reference.errors.minlength">Prénom is too short</span>
+                </mat-error>
+              </mat-form-field>
+  
+              <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+                <mat-label>Prix </mat-label>
+                <input matInput #prix="ngModel" minlength="3" id="prix"
+                       name="prix" [(ngModel)]="article.prix" required>
+  
+                <mat-error *ngIf="prix.invalid">
+                  <span *ngIf="prix.errors.required">Prix  is required</span>
+                  <span *ngIf="prix.errors.minlength">Prix  is too short</span>
+                </mat-error>
+              </mat-form-field>
+  
+  
+         
+  
+  
+                <mat-form-field class="field" appearance="fill">
+                  <mat-label>Destination</mat-label>
+                  <mat-select
+                    [(ngModel)]="this.article.destination"
+                    name="destination"
+                  >
+                    <mat-option
+                      *ngFor="let destination of distinations"
+                      [value]="destination"
+                    >
+                      {{ edistantion[destination] }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                
+                
+                <mat-form-field class="field" appearance="fill">
+                  <mat-label>Durabilité</mat-label>
+                  <mat-select
+                  [(ngModel)] = "this.article.durabilite"
+                  name="durabilite">
+                
+                  <mat-option *ngFor="let durabilite of durabilites" [value] = "durabilite">
+                    {{edurabilite[durabilite]}}
+  
+                  </mat-option>
+                </mat-select>
+                </mat-form-field>
+  
+                 
+                <mat-form-field class="field" appearance="fill">
+                  <mat-label>Types Article</mat-label>
+                  <mat-select
+                  [(ngModel)] = "this.article.typeArticle"
+                  name="typeArticle">
+                
+                  <mat-option *ngFor="let typeArticle of typesArticles" [value] = "typeArticle">
+                    {{typeArticle.designation}}
+  
+                  </mat-option>
+                </mat-select>
+                </mat-form-field>
+  
+  
+                <mat-form-field class="field" appearance="fill">
+                  <mat-label>Famille</mat-label>
+                  <mat-select
+                  [(ngModel)] = "this.article.famille"
+                  (selectionChange)="someMethod($event.value)"
+
+                  name="famille">
+                
+                  <mat-option *ngFor="let famille of familleslist" [value] = "famille">
+                    {{famille.name}}
+  
+                  </mat-option>
+                </mat-select>
+                </mat-form-field>
+  
+                  
+                <mat-form-field class="field" appearance="fill">
+                  <mat-label>Sous sousFamilles</mat-label>
+                  <mat-select
+                  [(ngModel)] = "this.article.sousFamille"
+                  name="sousFamille">
+                
+                  <mat-option *ngFor="let sousFamille of sousFamillesFamille" [value] = "sousFamille">
+                    {{sousFamille.name}}
+  
+                  </mat-option>
+                </mat-select>
+                </mat-form-field>
+       
+                <mat-form-field class="field" appearance="fill">
+                  <mat-label>Categories </mat-label>
+                  <mat-select
+                  [(ngModel)] = "this.article.categorie"
+                  name="categorie">
+                
+                  <mat-option *ngFor="let categorie of categories" [value] = "categorie">
+                    {{categorie.name}}
+  
+                  </mat-option>
+                </mat-select>
+                </mat-form-field>
+  
+                <mat-form-field class="field" appearance="fill">
+                  <mat-label>Taxes </mat-label>
+                  <mat-select
+                  [(ngModel)] = "this.article.taxes"
+                  name="taxes">
+                
+                  <mat-option *ngFor="let taxe of taxes" [value] = "taxe">
+                    {{taxe.type}}
+  
+                  </mat-option>
+                </mat-select>
+                </mat-form-field>
+  
+           
+              <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+                <mat-label>Tva </mat-label>
+                <input matInput #tva="ngModel" minlength="1" id="tva"
+                       name="tva" [(ngModel)]="article.tva" required>
+  
+                <mat-error *ngIf="tva.invalid">
+                  <span *ngIf="tva.errors.required">Tva  is required</span>
+                  <span *ngIf="tva.errors.minlength">Tva  is too short</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+                <mat-label>marge </mat-label>
+                <input matInput #marge="ngModel" minlength="1" id="marge"
+                       name="marge" [(ngModel)]="article.marge" required>
+  
+                <mat-error *ngIf="marge.invalid">
+                  <span *ngIf="marge.errors.required">marge  is required</span>
+                  <span *ngIf="marge.errors.minlength">marge  is too short</span>
+                </mat-error>
+              </mat-form-field>
+  
+              <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+                <mat-label>unite  <mat-icon> unite</mat-icon></mat-label>
+                <input matInput #unite="ngModel" minlength="1" id="unite"
+                       name="unite" [(ngModel)]="article.unite" required>
+  
+                <mat-error *ngIf="unite.invalid">
+                  <span *ngIf="unite.errors.required">unite  is required</span>
+                  <span *ngIf="unite.errors.minlength">unite  is too short</span>
+                </mat-error>
+              </mat-form-field>
+  
+          
+              </div>
+            </div>
+  
+     
+          <div class="col-5">
+  
+            <div class="row, right">
+                <button class="addButton" [disabled]="addArticle.invalid" mat-button class="mat-primary" type="submit" mat-raised-button>Confirmer</button>
+                <button class="addButton" mat-button class="mat-accent" type="reset" mat-raised-button>Annuler</button>
+            </div>
+          </div>
+        </div>
+    </form>
+  </div>

@@ -1,0 +1,160 @@
+
+<div class="espace"></div>
+<h3 class="addButton">Create client</h3>
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/clients'">Précédent
+  </button>
+<div class="example-container">
+  <form id="add-employe-form" #addClient="ngForm" (submit)="onSubmit()">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Code</mat-label>
+              <input matInput #code="ngModel" minlength="3"
+                     id="code" name="code"
+                     [(ngModel)]="client.code" required placeholder="Code">
+              <mat-error *ngIf="code.invalid">
+                <span *ngIf="code.errors.required">Code is required</span>
+                <span *ngIf="code.errors.minlength">Code is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Désignation </mat-label>
+              <input matInput #name="ngModel" minlength="3" id="name"
+                     name="name" [(ngModel)]="client.name" required>
+
+              <mat-error *ngIf="name.invalid">
+                <span *ngIf="name.errors.required">Désignation  is required</span>
+                <span *ngIf="name.errors.minlength">Désignation  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>adresse</mat-label>
+              <input matInput #adresse="ngModel" minlength="6"
+                     id="adresse" name="adresse"
+                     [(ngModel)]="client.adresse" required placeholder="adresse">
+              <mat-error *ngIf="adresse.invalid">
+                <span *ngIf="adresse.errors.required">adresse is required</span>
+                <span *ngIf="adresse.errors.minlength">adresse is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>TEL</mat-label>
+              <input type="tel" matInput #tel="ngModel" minlength="8"
+                     id="tel" name="tel"
+                     [(ngModel)]="client.tel" required placeholder="tel">
+              <mat-error *ngIf="tel.invalid">
+                <span *ngIf="tel.errors.required">tel is required</span>
+                <span *ngIf="tel.errors.minlength">tel is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>FAX</mat-label>
+              <input  matInput #fax="ngModel" 
+                     id="fax" name="fax"
+                     [(ngModel)]="client.fax" required placeholder="FAX">
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>MAIL</mat-label>
+              <input type="email" matInput #mail="ngModel" minlength="6"
+                     id="mail" name="mail"
+                     [(ngModel)]="client.mail" required placeholder="MAIL">
+              <mat-error *ngIf="mail.invalid">
+                <span *ngIf="mail.errors.required">mail is required</span>
+                <span *ngIf="mail.errors.minlength">mail is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill">
+              <mat-label>devise</mat-label>
+
+              
+              <mat-select  [(ngModel)]="client.devise" name="devise">
+                <mat-option  *ngFor="let dev of devisesList" [value]="dev" >
+                  {{dev.name}}
+                </mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+
+
+            
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Matricule fiscale </mat-label>
+              <input  matInput #matriculefiscale="ngModel" minlength="2"
+                     id="matriculefiscale" name="matriculefiscale"
+                     [(ngModel)]="client.matriculefiscale" required placeholder="Matricule fiscale">
+              <mat-error *ngIf="matriculefiscale.invalid">
+                <span *ngIf="matriculefiscale.errors.required">matriculefiscale  is required</span>
+                <span *ngIf="matriculefiscale.errors.minlength">matriculefiscale  is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Registre de commerce  </mat-label>
+              <input  matInput #registrecommerce="ngModel" minlength="2"
+                     id="registrecommerce" name="registrecommerce"
+                     [(ngModel)]="client.registrecommerce  " required placeholder="Registre de commerce ">
+              <mat-error *ngIf="registrecommerce.invalid">
+                <span *ngIf="registrecommerce.errors.required">registrecommerce  is required</span>
+                <span *ngIf="registrecommerce.errors.minlength">registrecommerce  is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Patente   </mat-label>
+              <input  matInput #patente="ngModel" minlength="2"
+                     id="patente" name="patente"
+                     [(ngModel)]="client.patente" required placeholder="Patente">
+              <mat-error *ngIf="patente.invalid">
+                <span *ngIf="patente.errors.required">patente  is required</span>
+                <span *ngIf="patente.errors.minlength">patente  is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Solde initial   </mat-label>
+              <input  matInput #solde_initial="ngModel" minlength="2"
+                     id="solde_initial" name="solde_initial"
+                     [(ngModel)]="client.solde_initial" required placeholder="Solde initial">
+              <mat-error *ngIf="solde_initial.invalid">
+                <span *ngIf="solde_initial.errors.required">Solde initial   is required</span>
+                <span *ngIf="solde_initial.errors.minlength">Solde initial   is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            
+
+
+            </div>
+          </div>
+
+   
+        <div class="col-5">
+
+          <div class="row, right">
+              <button class="addButton" [disabled]="addClient.invalid" mat-button class="mat-primary" type="submit" mat-raised-button>Confirmer</button>
+              <button class="addButton" mat-button class="mat-accent" type="reset" mat-raised-button>Annuler</button>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+

@@ -1,0 +1,52 @@
+
+<div class="espace"></div>
+<h3 class="addButton">Modifier devise</h3>
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/devises'">Précédent
+  </button>
+<div class="example-container">
+  <form id="add-employe-form" #addDevise="ngForm" (submit)="onSubmit()">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Désignation </mat-label>
+              <input matInput #name="ngModel" minlength="3" id="name"
+                     name="name" [(ngModel)]="devise.name" required>
+
+              <mat-error *ngIf="name.invalid">
+                <span *ngIf="name.errors.required">Désignation  is required</span>
+                <span *ngIf="name.errors.minlength">Désignation  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Taux</mat-label>
+              <input type="number" step="0.01" matInput #taux="ngModel" minlength="1" maxlength="10"
+                     id="taux" name="taux"
+                     [(ngModel)]="devise.taux" required placeholder="Taux">
+              <mat-error *ngIf="taux.invalid">
+                <span *ngIf="taux.errors.required">Taux is required</span>
+                <span *ngIf="taux.errors.minlength">Taux is too short</span>
+                <span *ngIf="taux.errors.maxlength">Taux is too long</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            </div>
+          </div>
+ 
+        <div class="col-5">
+          <div class="row, right">
+              <button class="addButton" [disabled]="addDevise.invalid" mat-button class="mat-primary" type="submit" mat-raised-button>Confirmer</button>
+              <button class="addButton" mat-button class="mat-accent" type="reset" mat-raised-button>Annuler</button>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+

@@ -1,0 +1,35 @@
+<h2 class="addButton">Fournisseur Details</h2> 
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/fournisseurs'">Précédent
+  </button>
+<div class="example-container addButton">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value" >
+              <mat-label>Désignation</mat-label>
+              <input matInput #raisonSociale="ngModel" minlength="3" 
+                     id="raisonSociale" name="raisonSociale"
+                     [(ngModel)]="fournisseur.raisonSociale" required placeholder="Désignation">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Numero</mat-label>
+              <input matInput #numero="ngModel" minlength="3" id="numero"
+                     name="numero" [(ngModel)]="fournisseur.numero" required
+                     placeholder="Numero">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Tel  <mat-icon> tel</mat-icon></mat-label>
+              <input matInput #tel="ngModel" minlength="7" id="tel"
+                     name="tel" [(ngModel)]="fournisseur.tel" required>       
+            </mat-form-field>
+            
+            </div>
+          </div>
+      </div>
+</div>

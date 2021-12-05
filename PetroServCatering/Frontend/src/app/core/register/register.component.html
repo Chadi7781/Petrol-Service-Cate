@@ -1,0 +1,114 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+      class="example-form"
+    >
+      <mat-card-content>
+        <section>
+          <mat-form-field class="example-full-width">
+            <div class="form-group">
+              <label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  [(ngModel)]="form.username"
+                  required
+                  minlength="3"
+                  maxlength="20"
+                  #username="ngModel"
+                  matInput
+                  placeholder="Username"
+                />
+              </label>
+              <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                <div *ngIf="username.errors.required">Username is required</div>
+                <div *ngIf="username.errors.minlength">
+                  Username must be at least 3 characters
+                </div>
+                <div *ngIf="username.errors.maxlength">
+                  Username must be at most 20 characters
+                </div>
+              </div>
+            </div>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field class="example-full-width">
+            <label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="form.email"
+                required
+                email
+                #email="ngModel"
+                matInput
+                placeholder="Email"
+              />
+            </label>
+            <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">
+                Email must be a valid email address
+              </div>
+            </div>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field class="example-full-width">
+            <label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="6"
+                #password="ngModel"
+                matInput
+                placeholder="Password"
+              />
+            </label>
+            <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">
+                Password must be at least 6 characters
+              </div>
+            </div>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field class="example-full-width">
+            <mat-label>Choose a role...</mat-label>
+            <mat-select [(ngModel)]="form.role" name="role" #role="ngModel">
+              <mat-option [value]="roles" *ngFor="let roles of Roles"
+                >{{ roles }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block">
+        Register
+      </button>
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </mat-card>
+</div>

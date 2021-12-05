@@ -1,0 +1,253 @@
+<div id="scoop" class="scoop">
+    <div class="scoop-overlay-box"></div>
+    <div class="scoop-container" >  
+        <header class="scoop-header">
+            <div class="scoop-wrapper"> 
+                <div class="scoop-left-header"> 
+                    <div class="scoop-logo"> 
+                       <img src="../../../assets/Petroserv-catering-logo.png" style="position: relative;top: 5px;height: 35px;width: 45px;">
+                    </div> 
+                </div>
+                <div class="scoop-right-header"> 
+                    <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="icon-menu"></i></a></div> 
+                    <span class="scoop-mtext">DAMMAK-GROUP : Petro-Serv-Catering</span>
+
+                    <div class="scoop-rr-header"> 
+                        <ul>
+                            <li class="icons">
+                                <a href="javascript:void(0)"><i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span class="scoop-badge badge-success">0</span>
+                                </a>
+                            </li>
+                            <li class="icons">
+                                <a href="javascript:void(0)"><i class="fa fa-bell" aria-hidden="true"></i>
+                                    <span class="scoop-badge badge-danger">0</span>
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="scoop-rr-header">
+                        <ul>
+                            <li class="icons"  *ngIf="isLoggedIn">
+                                <a routerLink="/profile">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="icons"  *ngIf="isLoggedIn">
+                                <a (click)="logout()">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                </a>
+                            </li> 
+                            <li class="icons" *ngIf="!isLoggedIn">
+                                <a href="/register" class="nav-link" routerLink="/register">           
+                                    <button type="button" class="btn btn-success btn-sm">S'inscrire</button>
+                                </a>
+                            </li> 
+                            <li class="icons"  *ngIf="!isLoggedIn">
+                                <a href="/register" class="nav-link" routerLink="/login">           
+                                    <button type="button" class="btn btn-success btn-sm">Se connecter</button>
+                                </a>
+
+                              </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="scoop-main-container">
+            <div class="scoop-wrapper">
+                <nav class="scoop-navbar" >  
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="scoop-inner-navbar"> 
+                        <div class="scoop-search"> 
+                            <span class="searchbar-toggle">  </span>
+                            <div class="scoop-search-box "> 
+                                <img src="../../../assets/images/user.png" style="background-repeat: no-repeat;
+                                display: block;margin-left: auto;margin-right: auto;width: 25%; ">
+                                <p *ngIf="isLoggedIn"  class="h4" style=" padding:9px;display: block;margin-left: auto;margin-right: auto;width: 25%;"
+                                >{{username}}                            
+                             </p>  
+                          </div> 
+                        </div>
+                         <ul class="scoop-item scoop-brand">
+                            <li class="active">
+                                <a routerLink="/">
+                                    <span class="scoop-micon"><i class="icon-speedometer"></i></span>
+                                    <span class="scoop-mtext">DashBoard</span>
+                                    <span class="scoop-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul> 
+                
+                        <ul class="scoop-item scoop-brand">
+                            
+                          <li class="scoop-hasmenu">
+                            <a href="javascript:void(0)">
+                                <span class="scoop-micon"><i class="icon-settings"></i></span>
+                                <span class="scoop-mtext">Paramètres</span> 
+                                <span class="scoop-mcaret"></span>
+                            </a>
+                            <ul class="scoop-submenu">
+                                <li class=" ">
+                                    <a routerLink="/employees">
+                                        <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                        <span class="scoop-mtext">Employers</span>
+                                        <span class="scoop-mcaret"></span>
+                                    </a> 
+                                </li>                             
+                            </ul> 
+                          
+                            <ul class="scoop-submenu">
+                              <li class=" ">
+                                  <a routerLink="/devises">
+                                      <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                      <span class="scoop-mtext">Devises</span>
+                                      <span class="scoop-mcaret"></span>
+                                  </a> 
+                              </li>  
+                            </ul> 
+                           
+                            <ul class="scoop-submenu">
+                              <li class=" ">
+                                  <a routerLink="/taxes">
+                                      <span class="scoop-micon"><i class="icon-diamond"></i></span>
+                                      <span class="scoop-mtext">Taxes</span>
+                                      <span class="scoop-mcaret"></span>
+                                  </a>
+                              </li>
+                            </ul> 
+                        </li>
+
+                            <li class="scoop-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="scoop-micon"><i class="icon-basket"></i></span>
+                                    <span class="scoop-mtext">Achats</span> 
+                                   <!--<span class="scoop-badge badge-warning">New</span>--> 
+                                    <span class="scoop-mcaret"></span>
+                                </a>
+                                <ul class="scoop-submenu">
+                                    <li>
+                                        <a routerLink="/fournisseurs">
+                                            <span class="scoop-micon"><i class="icon-note"></i></span>
+                                            <span class="scoop-mtext">Fournisseurs</span>
+                                            <span class="scoop-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a routerLink="/devislist">
+                                            <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                            <span class="scoop-mtext">Devis</span>
+                                            <span class="scoop-mcaret"></span>
+                                        </a> 
+                                    </li>
+                                    <li class="  ">
+                                        <a routerLink="/commandes">
+                                            <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                            <span class="scoop-mtext">Commandes</span>
+                                            <span class="scoop-mcaret"></span>
+                                        </a> 	
+                                    </li>
+                                    <li>
+                                          <a routerLink="/bonReceptions">
+                                              <span class="scoop-micon"><i class="icon-wallet"></i></span>
+                                              <span class="scoop-mtext">Bon de receptions</span>
+                                              <span class="scoop-mcaret"></span>
+                                          </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a routerLink="/factures">
+                                            <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                            <span class="scoop-mtext">Factures</span>
+                                            <span class="scoop-mcaret"></span>
+                                        </a> 
+                                    </li>
+                                   
+                                </ul> 
+                            </li>
+
+
+                            <li class="scoop-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="scoop-micon"><i class="icon-layers"></i></span>
+                                    <span class="scoop-mtext">Stocks</span> 
+                                   <!--<span class="scoop-badge badge-warning">New</span>--> 
+                                    <span class="scoop-mcaret"></span>
+                                </a>
+                                <ul class="scoop-submenu">
+                                    <li class=" ">
+                                        <a routerLink="/articles">
+                                            <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                            <span class="scoop-mtext">Articles</span>
+                                            <span class="scoop-mcaret"></span>
+                                        </a> 
+                                    </li>
+                                    <li class="  ">
+                                        <a routerLink="/familles">
+                                            <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                            <span class="scoop-mtext">Familles</span>
+                                            <span class="scoop-mcaret"></span>
+                                        </a> 	
+                                    </li>
+                                    <li class=" ">
+                                        <a routerLink="/sousfamilles">
+                                            <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                            <span class="scoop-mtext">Sous familles</span>
+                                            <span class="scoop-mcaret"></span>
+                                        </a> 
+                                    </li>
+
+                                    <li class=" ">
+                                        <a routerLink="/categories">
+                                            <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                            <span class="scoop-mtext">Categories</span>
+                                            <span class="scoop-mcaret"></span>
+                                        </a> 
+                                    </li>
+                                    <li class=" ">
+                                      <a routerLink="/typeArticles">
+                                          <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                          <span class="scoop-mtext">Types articles</span>
+                                          <span class="scoop-mcaret"></span>
+                                      </a> 
+                                  </li>
+                                   
+                                    <li class=" ">
+                                        <a routerLink="/magasins">
+                                            <span class="scoop-micon"><i class="icon-energy"></i></span>
+                                            <span class="scoop-mtext">Magasins</span>
+                                            <span class="scoop-mcaret"></span>
+                                        </a> 
+                                    </li>
+                                </ul> 
+                            </li>
+
+                            <li class="scoop-hasmenu">
+                              <a href="javascript:void(0)">
+                                  <span class="scoop-micon"><i class="icon-diamond"></i></span>
+                                  <span class="scoop-mtext">Ventes</span> 
+                                  <span class="scoop-mcaret"></span>
+                              </a>
+                              <ul class="scoop-submenu">
+                                <li class=" ">
+                                    <a routerLink="/clients">
+                                        <span class="scoop-micon"><i class="icon-wallet"></i></span>
+                                        <span class="scoop-mtext">Clients</span>
+                                        <span class="scoop-mcaret"></span>
+                                    </a> 
+                                </li>
+                               
+                            </ul> 
+                           </li>                              
+                        </ul>  
+                    </div> 
+                </nav> 
+                <div class="scoop-content" > 
+                    <div class="scoop-inner-content">                    
+                        <router-outlet></router-outlet>
+                     </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

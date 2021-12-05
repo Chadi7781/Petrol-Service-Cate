@@ -1,0 +1,127 @@
+<div class="espace"></div>
+<div class="">
+  <button
+    class="addButton"
+    mat-raised-button
+    color="primary"
+    matTooltip="ajouter commande"
+    matTooltipPosition="above"
+    [routerLink]="'/commandes/add/'"
+  >
+    Ajouter commande
+  </button>
+</div>
+<mat-form-field class="filter">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input />
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- numero Column -->
+    <ng-container matColumnDef="numero" class="w-75">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Numero</th>
+      <td mat-cell *matCellDef="let row">{{ row.numero }}</td>
+    </ng-container>
+
+    <!-- fournisseur Column -->
+    <ng-container matColumnDef="fournisseur">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fournisseur</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.fournisseur.raisonSociale }}
+      </td>
+    </ng-container>
+
+    <!-- totalTtc Column -->
+    <ng-container matColumnDef="totalTtc">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Ttc</th>
+      <td mat-cell *matCellDef="let row">{{ row.totalTtc }}</td>
+    </ng-container>
+
+    <!-- Etat Column -->
+    <ng-container matColumnDef="etat">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Etat</th>
+      <td mat-cell *matCellDef="let row">{{ row.etat.name }}</td>
+    </ng-container>
+
+    <!-- Numero de devis Column -->
+    <ng-container matColumnDef="devis N°">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>devis N°</th>
+      <td mat-cell *matCellDef="let row">
+        <p *ngIf="row.devis">{{ row.devis.numero }}</p>
+        <p *ngIf="!row.devis">Sans devis</p>
+      </td>
+      <!-- <td mat-cell *matCellDef="let row"> {{(row.devis.numero) || "Sans Devis"}} </td> -->
+    </ng-container>
+
+    <!-- Actions Column  -->
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+      <td mat-cell *matCellDef="let row">
+        <button
+          mat-icon-button
+          color="accent"
+          matTooltip="modifier"
+          matTooltipPosition="above"
+          (click)="updateCommande(row.id)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          matTooltip="supprimer"
+          matTooltipPosition="above"
+          (click)="openDialog(row.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="detail"
+          matTooltipPosition="above"
+          (click)="commandeDetails(row.id)"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          *ngIf="row.etat.name == 'Non_validé'"
+          mat-icon-button
+          color="accent"
+          matTooltip="valider"
+          matTooltipPosition="above"
+          (click)="commandeValider(row.id)"
+        >
+          <mat-icon>check_circle</mat-icon>
+        </button>
+        <button
+          title="générer facture"
+          mat-icon-button
+          color="basic"
+          matTooltip="valider"
+          matTooltipPosition="above"
+          (click)="genererFactureService(row.id)"
+        >
+          <mat-icon>receipt_long</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
+<!-- Copyright 2021 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

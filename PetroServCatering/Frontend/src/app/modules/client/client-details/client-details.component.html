@@ -1,0 +1,80 @@
+<h2 class="addButton">Clients Details</h2> 
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/clients'">Précédent
+  </button>
+<div class="example-container addButton">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value" >
+              <mat-label>Code</mat-label>
+              <input matInput  readonly="readonly" #code="ngModel"  id="code" name="code"
+                     [(ngModel)]="client.code" >
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Désignation</mat-label>
+              <input matInput readonly="readonly" #name="ngModel"  id="name"
+                     name="name" [(ngModel)]="client.name" >
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Adresse</mat-label>
+              <input matInput readonly="readonly" #adresse="ngModel"  id="adresse" name="adresse"
+                     [(ngModel)]="client.adresse"  >
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>TEL</mat-label>
+              <input matInput readonly="readonly" #tel="ngModel"   id="tel" name="tel"
+                     [(ngModel)]="client.tel"  >            
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>FAX</mat-label>
+              <input  matInput readonly="readonly" #fax="ngModel"   id="fax" name="fax"
+                     [(ngModel)]="client.fax">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>MAIL</mat-label>
+              <input matInput readonly="readonly" #mail="ngModel"  id="mail" name="mail"
+                     [(ngModel)]="client.mail">
+            </mat-form-field>
+
+            <mat-form-field  class="field"  appearance="fill" [floatLabel]="floatLabelControl.value" >
+            <mat-label>Devise</mat-label>
+            <input  readonly="readonly" matInput   #devise="ngModel"  id="devise" name="devise"
+              [(ngModel)]="client.devise.name" />
+          </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Matricule fiscale </mat-label>
+              <input  matInput #matriculefiscale="ngModel" readonly="readonly" id="matriculefiscale" name="matriculefiscale"
+                     [(ngModel)]="client.matriculefiscale">           
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Registre de commerce  </mat-label>
+              <input  matInput #registrecommerce="ngModel" readonly="readonly" id="registrecommerce" name="registrecommerce"
+                     [(ngModel)]="client.registrecommerce ">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Patente   </mat-label>
+              <input  matInput #patente="ngModel" readonly="readonly"  id="patente" name="patente"
+                     [(ngModel)]="client.patente" >
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Solde initial   </mat-label>
+              <input  matInput #solde_initial="ngModel" readonly="readonly" id="solde_initial" name="solde_initial"
+                     [(ngModel)]="client.solde_initial" >
+            </mat-form-field>
+            </div>
+          </div>
+      </div>
+</div>

@@ -1,0 +1,92 @@
+<h2 class="addButton">Article Details</h2> 
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/articles'">Précédent
+  </button>
+<div class="example-container addButton">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value" >
+              <mat-label>Désignation</mat-label>
+              <input matInput #name="ngModel" minlength="3" 
+                     id="name" name="name"
+                     [(ngModel)]="article.name" required placeholder="Désignation">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Reference</mat-label>
+              <input matInput #reference="ngModel" minlength="3" id="reference"
+                     name="reference" [(ngModel)]="article.reference" required
+                     placeholder="Reference">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Prix  <mat-icon> prix</mat-icon></mat-label>
+              <input matInput #prix="ngModel" minlength="7" id="prix"
+                     name="prix" [(ngModel)]="article.prix" required>       
+            </mat-form-field>
+
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Famille</mat-label>
+              <input matInput #reference="ngModel" minlength="3" id="famille"
+                     name="famille" [(ngModel)]="article.famille.name" required
+                     placeholder="famille">
+            </mat-form-field>
+
+            
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Categorie</mat-label>
+              <input matInput #reference="ngModel" minlength="3" id="categorie"
+                     name="categorie" [(ngModel)]="article.categorie.name" required
+                     placeholder="categorie">
+            </mat-form-field>
+            
+                 
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label> Type Article designation</mat-label>
+              <input matInput #reference="ngModel" minlength="3" id="typeArticle"
+                     name="typeArticle" [(ngModel)]="article.typeArticle.designation" required
+                     placeholder="typeArticle">
+            </mat-form-field>
+
+            
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label> Durabilité</mat-label>
+              <input matInput #reference="ngModel" minlength="3" id="durabilite"
+                     name="durabilite" [(ngModel)]="article.durabilite" required
+                     placeholder="durabilite">
+            </mat-form-field>
+                     
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label> Durabilité</mat-label>
+              <input matInput #reference="ngModel" minlength="3" id="destination"
+                     name="destination" [(ngModel)]="article.destination" required
+                     placeholder="destination">
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label> Tva</mat-label>
+              <input matInput #reference="ngModel" minlength="3" id="tva"
+                     name="tva" [(ngModel)]="article.tva" required
+                     placeholder="tva">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label> Marge</mat-label>
+              <input matInput #reference="ngModel" minlength="3" id="marge"
+                     name="marge" [(ngModel)]="article.marge" required
+                     placeholder="marge">
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label> unite</mat-label>
+              <input matInput #reference="ngModel" minlength="3" id="unite"
+                     name="unite" [(ngModel)]="article.unite" required
+                     placeholder="unite">
+            </mat-form-field>
+            </div>
+          </div>
+      </div>
+</div>

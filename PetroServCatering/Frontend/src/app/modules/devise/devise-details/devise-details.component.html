@@ -1,0 +1,32 @@
+<h2 class="addButton">Devises Details</h2> 
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/devises'">Précédent
+  </button>
+<div class="example-container addButton">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Désignation</mat-label>
+              <input matInput #adresse="ngModel" minlength="3" id="name"
+                     name="name" [(ngModel)]="devise.name" 
+                     placeholder="Désignation">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value" >
+              <mat-label>Taux</mat-label>
+              <input matInput #taux="ngModel" 
+                     id="taux" name="taux"
+                     [(ngModel)]="devise.taux" required placeholder="taux">
+            </mat-form-field>
+
+           
+
+            
+            </div>
+          </div>
+      </div>
+</div>

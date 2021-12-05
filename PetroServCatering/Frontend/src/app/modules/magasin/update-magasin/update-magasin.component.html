@@ -1,0 +1,77 @@
+
+<div class="espace"></div>
+<h3 class="addButton">Modifier magasin</h3>
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/magasins'">Précédent
+  </button>
+<div class="example-container">
+  <form id="add-employe-form" #addMagasin="ngForm" (submit)="onSubmit()">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Désignation</mat-label>
+              <input matInput #designation="ngModel" minlength="3"
+                     id="designation" name="designation"
+                     [(ngModel)]="magasin.designation" required placeholder="Raison sociale">
+              <mat-error *ngIf="designation.invalid">
+                <span *ngIf="designation.errors.required">Nom is required</span>
+                <span *ngIf="designation.errors.minlength">Nom is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Adresse </mat-label>
+              <input matInput #adresse="ngModel" minlength="3" id="adresse"
+                     name="adresse" [(ngModel)]="magasin.adresse" required>
+
+              <mat-error *ngIf="adresse.invalid">
+                <span *ngIf="adresse.errors.required">Adresse  is required</span>
+                <span *ngIf="adresse.errors.minlength">Adresse  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Tel </mat-label>
+              <input matInput #tel="ngModel" minlength="1" id="tel"
+                     name="tel" [(ngModel)]="magasin.tel" required>
+              <mat-error *ngIf="tel.invalid">
+                <span *ngIf="tel.errors.required">Tel  is required</span>
+                <span *ngIf="tel.errors.minlength">Tel  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Fax  <mat-icon> fax</mat-icon></mat-label>
+              <input matInput #fax="ngModel" minlength="1" id="fax"
+                     name="fax" [(ngModel)]="magasin.fax" required>
+              <mat-error *ngIf="fax.invalid">
+                <span *ngIf="fax.errors.required">fax  is required</span>
+                <span *ngIf="fax.errors.minlength">fax  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill">
+              <mat-label>Responsable</mat-label>
+              <mat-select [(ngModel)]="magasin.responsable" name="employee">
+                <mat-option *ngFor="let employee of employees" [value]="employee">
+                  {{employee.firstName}}, {{employee.lastName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+ 
+        <div class="col-5">
+          <div class="row, right">
+              <button class="addButton" [disabled]="addMagasin.invalid" mat-button class="mat-primary" type="submit" mat-raised-button>Confirmer</button>
+              <button class="addButton" mat-button class="mat-accent" type="reset" mat-raised-button>Annuler</button>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+

@@ -1,0 +1,76 @@
+<h2 class="addButton">Familles Details</h2> 
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/familles'">Précédent
+  </button>
+<div class="example-container addButton">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value" >
+              <mat-label>Code</mat-label>
+              <input matInput readonly='readonly' #code="ngModel"
+                    name="code"
+                     [(ngModel)]="famille.code" placeholder="code">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>name</mat-label>
+              <input matInput readonly='readonly' #adresse="ngModel" 
+                     name="name" [(ngModel)]="famille.name"
+                     placeholder="name">
+            </mat-form-field>
+
+         
+
+
+
+
+            </div>
+          </div>
+      </div>
+      
+
+    <!-- SOUS FAMILLES -->
+    <h2 class="addButton">Les sous familles de : <div style="color : red ;display: inline; font-weight: bold;">{{famille.name}}</div></h2>
+    <div class="example-container  addligneButton">
+      <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>NAME</th>
+                  <th>CODE</th>
+
+                    
+                </tr>
+            </thead>
+            <tbody>
+                 <tr *ngFor="let sous of sousFamilles; let i = index;">
+                  <td width="25%" >
+                    
+                      <input readonly='readonly'  matInput #id="ngModel" minlength="1" id="id"
+                       [(ngModel)]="sous.id" name="id">                     
+                    
+                  </td>
+                  <td  width="25%" >
+                   
+                      <input readonly='readonly'  matInput #id="ngModel" [(ngModel)]="sous.name" name="name">                     
+                    
+                  </td>
+                  <td width="25%" >
+                   
+                      <input readonly='readonly'  matInput #id="ngModel" [(ngModel)]="sous.code" name="code">                     
+                
+                  </td>
+                  
+                   
+                </tr>            
+            </tbody>
+        </table>
+      </div>
+
+     <!-- FIN SOUS FAMILLES -->
+  
+</div>

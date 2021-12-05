@@ -1,0 +1,77 @@
+
+<div class="espace"></div>
+<h3 class="addButton">Create Taxe</h3>
+
+<button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/taxes'">Précédent
+</button>
+<div class="example-container">
+  <form id="add-taxe-form" #addTaxe="ngForm" (submit)="onSubmit()">
+
+    <div class="example-container" style="width: fit-content">
+      <div class="col-12">
+        <div class="row">
+
+          <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+            <mat-label>Type Taxe</mat-label>
+            <input matInput #type="ngModel" minlength="3" id="type"
+                   name="type" [(ngModel)]="taxe.type" required
+                   placeholder="type">
+            <mat-error *ngIf="type.invalid">
+              <span *ngIf="type.errors.required">type is required</span>
+              <span *ngIf="type.errors.minlength">type is too short</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" appearance="fill">
+            <mat-label>Sens Taxe</mat-label>
+
+            <mat-select  [(ngModel)]="taxe.sens" name="sens">
+              <mat-option  *ngFor="let option of optionsList" [value]="option" >
+                {{option}}
+              </mat-option>
+            </mat-select>
+           
+          </mat-form-field>
+
+          <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+            <mat-label>Taux Taxe</mat-label>
+            <input matInput #taux="ngModel" minlength="1"
+                   id="taux" name="taux"
+                   [(ngModel)]="taxe.taux" required placeholder="taux">
+            <mat-error *ngIf="taux.invalid">
+              <span *ngIf="taux.errors.required">taux is required</span>
+              <span *ngIf="taux.errors.minlength">taux is not a number</span>
+
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Date Début</mat-label>
+            <input matInput  [matDatepicker]="dateD" #dateDebut="ngModel" id="dateDebut"
+                   name="dateDebut" [(ngModel)]="taxe.dateDebut"  required>
+            <mat-datepicker-toggle matSuffix [for]="dateD"></mat-datepicker-toggle>
+            <mat-datepicker #dateD></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Date fin</mat-label>
+            <input matInput  [matDatepicker]="dateF" #dateFin="ngModel" id="dateFin"
+                   name="dateFin" [(ngModel)]="taxe.dateFin"  required>
+            <mat-datepicker-toggle matSuffix [for]="dateF"></mat-datepicker-toggle>
+            <mat-datepicker #dateF></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div class="col-5">
+        <div class="row, right">
+          <button class="addButton" [disabled]="addTaxe.invalid" mat-button class="mat-primary" type="submit" mat-raised-button>Confirmer</button>
+          <button class="addButton" mat-button class="mat-accent" type="reset" mat-raised-button>Annuler</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

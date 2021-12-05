@@ -1,0 +1,40 @@
+.espace {
+  height: 25px;
+}
+
+.addButton {
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+.addligneButton {
+  margin-right: 25px;
+}
+.field {
+  margin-left: 25px;
+  margin-bottom: 15px;
+  width: 400px;
+}
+.lignefield {
+  margin-left: 25px;
+  margin-bottom: 15px;
+  width: 250px;
+}
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-container form {
+  margin-bottom: 20px;
+}
+
+.example-container form > * {
+  margin: 5px 0;
+}
+
+.example-container .mat-radio-button {
+  margin: 0 12px;
+}
+.right {
+  width: 300px;
+  margin-left: 960px;
+}

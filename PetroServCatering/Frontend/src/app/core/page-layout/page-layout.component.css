@@ -1,0 +1,23 @@
+.avatar {
+  background-image: url("../../../assets/Petroserv-catering-logo.png");
+  background-repeat: no-repeat;
+
+  height: 50px;
+  width: 80px;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: #dbd5cc;
+}

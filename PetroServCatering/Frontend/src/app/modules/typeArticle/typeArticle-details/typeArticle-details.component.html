@@ -1,0 +1,30 @@
+<h2 class="addButton">TypeArticles Details</h2> 
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/typeArticles'">Précédent
+  </button>
+<div class="example-container addButton">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value" >
+              <mat-label>Code</mat-label>
+              <input matInput #code="ngModel" minlength="3" 
+                     id="code" name="code"
+                     [(ngModel)]="typeArticle.code" required placeholder="code">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Designation</mat-label>
+              <input matInput #designation="ngModel" minlength="3" id="designation"
+                     name="designation" [(ngModel)]="typeArticle.designation" required
+                     placeholder="designation">
+            </mat-form-field>
+
+            
+            </div>
+          </div>
+      </div>
+</div>

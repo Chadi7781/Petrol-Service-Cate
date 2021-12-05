@@ -1,0 +1,112 @@
+<div class="espace"></div>
+<h3 class="addButton">Modifier famille </h3>
+
+
+<button class="addButton" mat-raised-button color="primary" matTooltip="Précédent" matTooltipPosition="above"
+  [routerLink]="'/familles'">Précédent
+</button>
+<div class="example-container">
+  <form id="add-employe-form" #addFamille="ngForm" (submit)="onSubmit()">
+
+    <div class="example-container" style="width: fit-content">
+      <div class="col-12">
+        <div class="row">
+
+          <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+            <mat-label>Code</mat-label>
+            <input matInput #code="ngModel" minlength="3" id="code" name="code" [(ngModel)]="famille.code" required
+              placeholder="Raison sociale">
+            <mat-error *ngIf="code.invalid">
+              <span *ngIf="code.errors.required">Code is required</span>
+              <span *ngIf="code.errors.minlength">COde is too short</span>
+
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+            <mat-label>name </mat-label>
+            <input matInput #adresse="ngModel" minlength="3" id="name" name="name" [(ngModel)]="famille.name" required>
+
+            <mat-error *ngIf="adresse.invalid">
+              <span *ngIf="adresse.errors.required">name is required</span>
+              <span *ngIf="adresse.errors.minlength">name is too short</span>
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div class="col-5">
+        <div class="row, right">
+          <button class="addButton" [disabled]="addFamille.invalid" mat-button class="mat-primary" type="submit"
+            mat-raised-button>Confirmer</button>
+          <button class="addButton" mat-button class="mat-accent" type="reset" mat-raised-button>Annuler</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="ajouter" matTooltipPosition="above"
+            (click)="ajouterSousFamille()">ajouter sous famille
+          </button>
+  <!-- SOUS FAMILLES -->
+  <h2 class="addButton">Les sous familles de : <div style="color : red ;display: inline; font-weight: bold;">
+      {{famille.name}}</div>
+  </h2>
+  <div class="example-container  addligneButton">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>CODE</th>
+
+
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let sous of sousFamilles; let i = index;">
+          <td width="25%">
+
+            <input matInput #id="ngModel" minlength="1" id="id" [(ngModel)]="sous.id" name="id">
+
+          </td>
+          <td width="25%">
+
+            <input matInput #id="ngModel" [(ngModel)]="sous.name" name="name">
+
+          </td>
+          <td width="25%">
+
+            <input matInput #id="ngModel" [(ngModel)]="sous.code" name="code">
+
+          </td>
+
+          <!-- Actions Column  -->
+          
+          
+          <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions</th>
+            <td>
+              <button mat-icon-button color="accent" matTooltip="modifier" matTooltipPosition="above"
+                (click)="updatesousFamille(sous.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" matTooltip="supprimer" matTooltipPosition="above"
+                (click)="openDialog(sous.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" matTooltip="detail" matTooltipPosition="above"
+                (click)="sousfamilleDetails(sous.id)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FIN SOUS FAMILLES -->
+</div>

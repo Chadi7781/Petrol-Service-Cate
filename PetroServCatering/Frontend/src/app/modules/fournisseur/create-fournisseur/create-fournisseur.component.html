@@ -1,0 +1,106 @@
+
+<div class="espace"></div>
+<h3 class="addButton">Create fournisseur</h3>
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/fournisseurs'">Précédent
+  </button>
+<div class="example-container">
+  <form id="add-employe-form" #addFournisseur="ngForm" (submit)="onSubmit()">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Raison sociale</mat-label>
+              <input matInput #raisonSociale="ngModel" minlength="3"
+                     id="raisonSociale" name="raisonSociale"
+                     [(ngModel)]="fournisseur.raisonSociale" required placeholder="Raison sociale">
+              <mat-error *ngIf="raisonSociale.invalid">
+                <span *ngIf="raisonSociale.errors.required">Nom is required</span>
+                <span *ngIf="raisonSociale.errors.minlength">Nom is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Numero</mat-label>
+              <input matInput #numero="ngModel" minlength="3" id="numero"
+                     name="numero" [(ngModel)]="fournisseur.numero" required
+                     placeholder="numero">
+              <mat-error *ngIf="numero.invalid">
+                <span *ngIf="numero.errors.required">Numero is required</span>
+                <span *ngIf="numero.errors.minlength">Numero is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Adresse </mat-label>
+              <input matInput #adresse="ngModel" minlength="3" id="adresse"
+                     name="adresse" [(ngModel)]="fournisseur.adresse" required>
+
+              <mat-error *ngIf="adresse.invalid">
+                <span *ngIf="adresse.errors.required">Adresse  is required</span>
+                <span *ngIf="adresse.errors.minlength">Adresse  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Tel </mat-label>
+              <input matInput #tel="ngModel" minlength="1" id="tel"
+                     name="tel" [(ngModel)]="fournisseur.tel" required>
+
+              <mat-error *ngIf="tel.invalid">
+                <span *ngIf="tel.errors.required">Tel  is required</span>
+                <span *ngIf="tel.errors.minlength">Tel  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Email  <mat-icon> email</mat-icon></mat-label>
+              <input matInput #email="ngModel" minlength="1" id="email"
+                     name="email" [(ngModel)]="fournisseur.email" required>
+
+              <mat-error *ngIf="email.invalid">
+                <span *ngIf="email.errors.required">email  is required</span>
+                <span *ngIf="email.errors.minlength">email  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Date </mat-label>
+              <input matInput  [matDatepicker]="dateFab" #date="ngModel" id="date"
+              name="date" [(ngModel)]="fournisseur.date"  required>
+              <mat-datepicker-toggle matSuffix [for]="dateFab"></mat-datepicker-toggle>
+              <mat-datepicker #dateFab></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Matricule Fiscale  <mat-icon> matriculeFiscale</mat-icon></mat-label>
+              <input matInput #matriculeFiscale="ngModel" minlength="1" id="matriculeFiscale"
+                     name="matriculeFiscale" [(ngModel)]="fournisseur.matriculeFiscale" required>
+
+              <mat-error *ngIf="matriculeFiscale.invalid">
+                <span *ngIf="matriculeFiscale.errors.required">matricule fiscale  is required</span>
+                <span *ngIf="matriculeFiscale.errors.minlength">matricule fiscale  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            </div>
+          </div>
+
+   
+        <div class="col-5">
+
+          <div class="row, right">
+              <button class="addButton" [disabled]="addFournisseur.invalid" mat-button class="mat-primary" type="submit" mat-raised-button>Confirmer</button>
+              <button class="addButton" mat-button class="mat-accent" type="reset" mat-raised-button>Annuler</button>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+

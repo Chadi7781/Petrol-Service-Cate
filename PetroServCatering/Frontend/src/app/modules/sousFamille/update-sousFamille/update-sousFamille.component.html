@@ -1,0 +1,49 @@
+
+<div class="espace"></div>
+<h3 class="addButton">Modifier sousFamille</h3>
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/sousfamilles'">Précédent
+  </button>
+<div class="example-container">
+  <form id="add-employe-form" #addSousFamille="ngForm" (submit)="onSubmit()">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Code</mat-label>
+              <input matInput #code="ngModel" minlength="3"
+                     id="code" name="code"
+                     [(ngModel)]="sousFamille.code" required placeholder="Raison sociale">
+              <mat-error *ngIf="code.invalid">
+                <span *ngIf="code.errors.required">Code is required</span>
+                <span *ngIf="code.errors.minlength">COde is too short</span>
+
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>name </mat-label>
+              <input matInput #adresse="ngModel" minlength="3" id="name"
+                     name="name" [(ngModel)]="sousFamille.name" required>
+
+              <mat-error *ngIf="adresse.invalid">
+                <span *ngIf="adresse.errors.required">name  is required</span>
+                <span *ngIf="adresse.errors.minlength">name  is too short</span>
+              </mat-error>
+            </mat-form-field>
+
+            </div>
+          </div>
+ 
+        <div class="col-5">
+          <div class="row, right">
+              <button class="addButton" [disabled]="addSousFamille.invalid" mat-button class="mat-primary" type="submit" mat-raised-button>Confirmer</button>
+              <button class="addButton" mat-button class="mat-accent" type="reset" mat-raised-button>Annuler</button>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+

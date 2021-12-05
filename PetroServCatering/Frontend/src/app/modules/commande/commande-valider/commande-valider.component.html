@@ -1,0 +1,262 @@
+
+     <br />
+     <h3 class="addButton">Valider Commande</h3>
+     <button
+       class="addButton"
+       mat-raised-button
+       color="primary"
+       matTooltip="Précédent"
+       matTooltipPosition="above"
+       [routerLink]="'/commandes'"
+     >
+       Précédent
+     </button>
+     <div class="example-container">
+       <form id="add-employe-form" #addCommande="ngForm" (submit)="onSubmit()">
+         <div class="example-container" style="width: fit-content">
+           <div class="col-12">
+             <div class="row">
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>Fournisseur</mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #founissuer="ngModel"
+                   minlength="3"
+                   id="fournisseur"
+                   name="fournisseur"
+                   [(ngModel)]="commande.fournisseur.raisonSociale"
+                 />
+               </mat-form-field>
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>Numero de Commande</mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #numero="ngModel"
+                   minlength="3"
+                   id="numero"
+                   name="numero"
+                   [(ngModel)]="commande.numero"
+                 />
+               </mat-form-field>
+               <mat-form-field class="field" appearance="fill">
+                 <mat-label>Date</mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #date="ngModel"
+                   id="date"
+                   name="date"
+                   [(ngModel)]="commande.date"
+                 />
+               </mat-form-field>
+             </div>
+             <div class="row">
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>TotalHt </mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #totalHt="ngModel"
+                   minlength="3"
+                   id="totalHt"
+                   name="totalHt"
+                   [(ngModel)]="commande.totalHt"
+                 />
+
+               </mat-form-field>
+     
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>totalTaxe </mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #totalTaxe="ngModel"
+                   minlength="1"
+                   id="totalTaxe"
+                   name="totalTaxe"
+                   [(ngModel)]="commande.totalTaxe"
+                 />
+               </mat-form-field>
+               <mat-form-field
+               class="field"
+               appearance="fill"
+               [floatLabel]="floatLabelControl.value"
+             >
+               <mat-label>Remise</mat-label>
+               <input
+                 readonly="readonly"
+                 matInput
+                 #remise="ngModel"
+                 minlength="1"
+                 id="remise"
+                 name="remise"
+                 [(ngModel)]="commande.remise"
+               />
+             </mat-form-field>      
+             </div>
+             <div class="row">
+              <mat-form-field
+              class="field"
+              appearance="fill"
+              [floatLabel]="floatLabelControl.value">
+              <mat-label>TotalTtc </mat-label>
+              <input
+                readonly="readonly"
+                matInput
+                #totalTtc="ngModel"
+                minlength="1"
+                id="totalTtc"
+                name="totalTtc"
+                [(ngModel)]="commande.totalTtc"/>
+               </mat-form-field>
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value">
+                 <mat-label>Etat</mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #marge="ngModel"
+                   minlength="1"
+                   id="etat"
+                   name="etat"
+                   [(ngModel)]="commande.etat.name"
+                 />
+               </mat-form-field>
+             </div>
+           </div>
+           <div class="col-5">
+            <div class="row, right">
+                <button class="addButton" [disabled]="addCommande.invalid" mat-button class="mat-primary" type="submit" mat-raised-button>valider</button>
+            </div>
+          </div>
+         </div>
+       </form>
+     </div>    
+     
+     <br />
+     <div class="example-container addligneButton">
+       <table class="table table-striped table-bordered">
+         <thead>
+           <tr>
+             <th>Article</th>
+             <th>Quantité</th>
+             <th>Prix unitaire</th>
+             <th>% Remise</th>
+             <th>% TVA</th>
+             <th>Total TVA</th>
+             <th>Total TTC</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr *ngFor="let ligneCommande of commande.ligneCommandes; let i = index">
+             <td width="25%">
+               <ng-container matColumnDef="Article">
+                 <mat-header-cell *matHeaderCellDef>Article</mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneCommande.article"
+                   class="form-control"
+                 >
+                   {{ ligneCommande.article.name }}</mat-cell
+                 >
+               </ng-container>
+             </td>
+             <td width="10%">
+               <ng-container matColumnDef="Quantite">
+                 <mat-header-cell *matHeaderCellDef>Quantite</mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneCommande.quantite"
+                   class="form-control"
+                 >
+                   {{ ligneCommande.quantite }}</mat-cell
+                 >
+               </ng-container>
+             </td>
+             <td width="15%">
+               <ng-container matColumnDef="prix">
+                 <mat-header-cell *matHeaderCellDef> Prix </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneCommande.article"
+                   class="form-control"
+                 >
+                   {{ ligneCommande.article.prix }}
+                 </mat-cell>
+               </ng-container>
+             </td>
+             <td width="15%">
+               <ng-container matColumnDef="remise">
+                 <mat-header-cell *matHeaderCellDef> Remise </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneCommande.article"
+                   class="form-control"
+                 >
+                   {{ ligneCommande.remise }}
+                 </mat-cell>
+               </ng-container>
+             </td>
+             <td width="10%">
+               <ng-container matColumnDef="% TVA">
+                 <mat-header-cell *matHeaderCellDef> % Tva </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneCommande.article"
+                   class="form-control"
+                 >
+                   {{ ligneCommande.article.tva }} %</mat-cell
+                 >
+               </ng-container>
+             </td>
+             <td width="15%">
+               <ng-container matColumnDef="Total TVA">
+                 <mat-header-cell *matHeaderCellDef> Total Tva </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneCommande.article && ligneCommande.quantite"
+                   class="form-control"
+                 >
+                 {{ligneCommande.totalTaxe}}
+                 </mat-cell>
+               </ng-container>
+             </td>
+             <td width="20%">
+               <ng-container matColumnDef="Total TTC">
+                 <mat-header-cell *matHeaderCellDef> Total TTC </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneCommande.article && ligneCommande.quantite"
+                   class="form-control"
+                 >
+                 {{ligneCommande.totalTtc}}
+                 </mat-cell>
+               </ng-container>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+     <br />
+    
+     

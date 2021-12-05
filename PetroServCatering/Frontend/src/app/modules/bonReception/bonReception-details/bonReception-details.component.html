@@ -1,0 +1,292 @@
+
+     <br />
+     <h3 class="addButton">Détails Bon de Reception</h3>
+     <button
+       class="addButton"
+       mat-raised-button
+       color="primary"
+       matTooltip="Précédent"
+       matTooltipPosition="above"
+       [routerLink]="'/bonReceptions'"
+     >
+       Précédent
+     </button>
+     <div class="example-container">
+       <form id="add-employe-form" #addBonReception="ngForm">
+         <div class="example-container" style="width: fit-content">
+           <div class="col-12">
+             <div class="row">
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>Fournisseur</mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #founissuer="ngModel"
+                   id="fournisseur"
+                   name="fournisseur"
+                   [(ngModel)]="bonReception.fournisseur.raisonSociale"
+                 />
+               </mat-form-field>
+               <mat-form-field class="field" appearance="fill">
+                <mat-label>Magasin</mat-label>
+                <input
+                readonly="readonly"
+                   matInput
+                   #magasin="ngModel"
+                   id="magasin"
+                   name="magasin"
+                    [(ngModel)]="bonReception.magasin.designation" >
+              </mat-form-field>
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>Numero de Bon de Reception</mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #numero="ngModel"
+                   minlength="3"
+                   id="numero"
+                   name="numero"
+                   [(ngModel)]="bonReception.numero"
+                 />
+               </mat-form-field>
+               <mat-form-field class="field" appearance="fill">
+                 <mat-label>Date</mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #date="ngModel"
+                   id="date"
+                   name="date"
+                   [(ngModel)]="bonReception.date"
+                 />
+               </mat-form-field>
+             </div>
+             <div class="row">
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>TotalHt </mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #totalHt="ngModel"
+                   minlength="3"
+                   id="totalHt"
+                   name="totalHt"
+                   [(ngModel)]="bonReception.totalHt"
+                 />
+
+               </mat-form-field>
+     
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>totalTaxe </mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #totalTaxe="ngModel"
+                   minlength="1"
+                   id="totalTaxe"
+                   name="totalTaxe"
+                   [(ngModel)]="bonReception.totalTaxe"
+                 />
+               </mat-form-field>
+     
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>TotalTtc </mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #totalTtc="ngModel"
+                   minlength="1"
+                   id="totalTtc"
+                   name="totalTtc"
+                   [(ngModel)]="bonReception.totalTtc"
+                 />
+               </mat-form-field>
+             </div>
+             <div class="row">
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>Remise</mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #remise="ngModel"
+                   minlength="1"
+                   id="remise"
+                   name="remise"
+                   [(ngModel)]="bonReception.remise"
+                 />
+               </mat-form-field>
+               <mat-form-field
+                 class="field"
+                 appearance="fill"
+                 [floatLabel]="floatLabelControl.value"
+               >
+                 <mat-label>Etat</mat-label>
+                 <input
+                   readonly="readonly"
+                   matInput
+                   #marge="ngModel"
+                   minlength="1"
+                   id="etat"
+                   name="etat"
+                   [(ngModel)]="bonReception.etat.name"
+                 />
+               </mat-form-field>
+             </div>
+           </div>
+         </div>
+       </form>
+     </div>    
+     
+     <br />
+     <div class="example-container addligneButton">
+       <table class="table table-striped table-bordered">
+         <thead>
+           <tr>
+             <th>Article</th>
+             <th>Quantité</th>
+             <th>Prix unitaire</th>
+             <th>% Remise</th>
+             <th>Date fabrication</th>
+             <th>Date validité</th>
+             <th>% TVA</th>
+             <th>Total TVA</th>
+             <th>Total TTC</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr *ngFor="let ligneReception of bonReception.ligneReceptions; let i = index">
+             <td width="15%">
+               <ng-container matColumnDef="Article">
+                 <mat-header-cell *matHeaderCellDef>Article</mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneReception.article"
+                   class="form-control"
+                 >
+                   {{ ligneReception.article.name }}</mat-cell
+                 >
+               </ng-container>
+             </td>
+             <td width="10%">
+               <ng-container matColumnDef="Quantite">
+                 <mat-header-cell *matHeaderCellDef>Quantite</mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneReception.quantite"
+                   class="form-control"
+                 >
+                   {{ ligneReception.quantite }}</mat-cell
+                 >
+               </ng-container>
+             </td>
+             <td width="10%">
+               <ng-container matColumnDef="prix">
+                 <mat-header-cell *matHeaderCellDef> Prix </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneReception.article"
+                   class="form-control"
+                 >
+                   {{ ligneReception.article.prix }}
+                 </mat-cell>
+               </ng-container>
+             </td>
+             <td width="10%">
+               <ng-container matColumnDef="remise">
+                 <mat-header-cell *matHeaderCellDef> Remise </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneReception.article"
+                   class="form-control"
+                 >
+                   {{ ligneReception.remise }}
+                 </mat-cell>
+               </ng-container>
+             </td>
+              <td width="10%">
+                <ng-container matColumnDef="dateFabrication">
+                  <mat-header-cell *matHeaderCellDef> Date fabrication </mat-header-cell>
+                  <mat-cell
+                    readonly="readonly"
+                    class="form-control">
+                    {{ ligneReception.dateFabrication }}
+                </mat-cell>
+              </ng-container>
+            </td>
+            <td width="10%">
+              <ng-container matColumnDef="dateValidite">
+                <mat-header-cell *matHeaderCellDef> Date validité </mat-header-cell>
+                <mat-cell
+                  readonly="readonly"
+                  class="form-control">
+                  {{ ligneReception.dateValidite }}
+              </mat-cell>
+            </ng-container>
+          </td>
+             <td width="10%">
+               <ng-container matColumnDef="% TVA">
+                 <mat-header-cell *matHeaderCellDef> % Tva </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneReception.article"
+                   class="form-control"
+                 >
+                   {{ ligneReception.article.tva }} %</mat-cell
+                 >
+               </ng-container>
+             </td>
+             <td width="15%">
+               <ng-container matColumnDef="Total TVA">
+                 <mat-header-cell *matHeaderCellDef> Total Tva </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneReception.article && ligneReception.quantite"
+                   class="form-control"
+                 >
+                 {{ligneReception.totalTaxe}}
+                 </mat-cell>
+               </ng-container>
+             </td>
+             <td width="20%">
+               <ng-container matColumnDef="Total TTC">
+                 <mat-header-cell *matHeaderCellDef> Total TTC </mat-header-cell>
+                 <mat-cell
+                   readonly="readonly"
+                   *ngIf="ligneReception.article && ligneReception.quantite"
+                   class="form-control"
+                 >
+                 {{ligneReception.totalTtc}}
+                 </mat-cell>
+               </ng-container>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+     <br />
+     
+     

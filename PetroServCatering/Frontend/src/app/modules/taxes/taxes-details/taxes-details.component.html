@@ -1,0 +1,52 @@
+<h2 class="addButton">Taxe Details</h2>
+
+<button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/taxes'">Précédent
+</button>
+<div class="example-container addButton">
+
+  <div class="example-container" style="width: fit-content">
+    <div class="col-12">
+      <div class="row">
+
+        <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value" >
+          <mat-label>Taux Taxe</mat-label>
+          <input matInput #taux="ngModel" minlength="3"
+                 id="taux" name="taux"
+                 [(ngModel)]="taxe.taux" required placeholder="Taux">
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+          <mat-label>Type Taxe</mat-label>
+          <input matInput #type="ngModel" minlength="3" id="type"
+                 name="type" [(ngModel)]="taxe.type" required
+                 placeholder="Type ">
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+          <mat-label>sens Taxe</mat-label>
+          <input matInput #sens="ngModel" minlength="3" id="sens"
+                 name="sens" [(ngModel)]="taxe.sens" required
+                 placeholder="sens ">
+        </mat-form-field>
+
+
+        <mat-form-field class="field" appearance="fill">
+          <mat-label>Date Debut</mat-label>
+          <input matInput  [matDatepicker]="dateDeb" #date="ngModel" id="dateDebut"
+                 name="date" [(ngModel)]="taxe.dateDebut"  required>
+          <mat-datepicker-toggle matSuffix [for]="dateDeb"></mat-datepicker-toggle>
+          <mat-datepicker #dateDeb></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="fill">
+          <mat-label>Date Fin</mat-label>
+          <input matInput  [matDatepicker]="dateFin" #date="ngModel" id="dateFin"
+                 name="date" [(ngModel)]="taxe.dateFin"  required>
+          <mat-datepicker-toggle matSuffix [for]="dateDeb"></mat-datepicker-toggle>
+          <mat-datepicker #dateFin></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<h2 class="addButton">Employee Details</h2> 
+
+  <button class="addButton" mat-raised-button color="primary" matTooltip="Précédent"
+        matTooltipPosition="above" [routerLink]="'/employees'">Précédent
+  </button>
+<div class="example-container addButton">
+
+    <div class="example-container" style="width: fit-content">
+       <div class="col-12">
+          <div class="row">
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value" >
+              <mat-label>Nom</mat-label>
+              <input matInput #firstName="ngModel" minlength="3" 
+                     id="firstName" name="firstName"
+                     [(ngModel)]="employee.firstName" required placeholder="Nom">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Prénom</mat-label>
+              <input matInput #lastName="ngModel" minlength="3" id="lastName"
+                     name="lastName" [(ngModel)]="employee.lastName" required
+                     placeholder="Prénom">
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="fill" [floatLabel]="floatLabelControl.value">
+              <mat-label>Email  <mat-icon> email</mat-icon></mat-label>
+              <input matInput #emailId="ngModel" minlength="7" id="emailId"
+                     name="emailId" [(ngModel)]="employee.emailId" required>       
+            </mat-form-field>
+            
+            </div>
+          </div>
+      </div>
+</div>

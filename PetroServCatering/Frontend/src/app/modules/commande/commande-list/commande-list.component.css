@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+  }
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  td, th {
+    width: 20%;
+  }
+  .espace {
+    height: 25px;
+  }
+
+  .addButton {
+    margin-left: 25px;
+    margin-bottom: 15px;
+  }
+
+  .filter {
+    margin-left: 50px;
+    margin-bottom: 15px;
+    width: 50%;
+  }
+  .w-75{
+    width: 75px;
+  }
